@@ -1,0 +1,41 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+site_url: https://backlinkbotai.netlify.app/
+display_url: https://backlinkbotai.netlify.app/
+media_folder: "public/images/blog"
+public_folder: "/images/blog"
+
+# These settings ensure proper authentication
+publish_mode: editorial_workflow
+
+# Post-publish webhook
+publish_webhook: "/.netlify/functions/handle-blog-publish"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
+      - {label: "Author", name: "author", widget: "string", default: "Backlink Bot Team"}
+      - {label: "Summary", name: "summary", widget: "text"}
+      - {label: "Tags", name: "tags", widget: "list", default: ["SEO"]}
+      - {label: "Body", name: "body", widget: "markdown"}
+  
+  - name: "glossary"
+    label: "Glossary"
+    folder: "public/content/glossary"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Term", name: "term", widget: "string"}
+      - {label: "Definition", name: "definition", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown", required: false}

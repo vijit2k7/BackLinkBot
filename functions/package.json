@@ -1,0 +1,12 @@
+{
+  "name": "backlinkbot-functions",
+  "version": "1.0.0",
+  "description": "Serverless functions for the BacklinkBot website",
+  "main": "submit-email.js",
+  "dependencies": {
+    "resend": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+} 
